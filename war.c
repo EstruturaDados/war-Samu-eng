@@ -48,7 +48,7 @@ void atacar(Territorio* atacante, Territorio* defensor) {
     int ataque_dado = (rand() % 6) + 1;
     int defesa_dado = (rand() % 6) + 1;
 
-    printf("\n⚔️ SIMULAÇÃO DE BATALHA ⚔️\n");
+    printf("\n SIMULAÇÃO DE BATALHA \n");
     printf("  %s (Tropas: %d) rola o dado de ATAQUE: %d\n", atacante->nome, atacante->tropas, ataque_dado);
     printf("  %s (Tropas: %d) rola o dado de DEFESA: %d\n", defensor->nome, defensor->tropas, defesa_dado);
 
@@ -95,7 +95,7 @@ Territorio* cadastrarTerritorios(int* tamanho) {
     int num_territorios;
 
     printf("===================================================\n");
-    printf("📝 CONFIGURAÇÃO INICIAL DO MAPA\n");
+    printf(" CONFIGURAÇÃO INICIAL DO MAPA\n");
     printf("===================================================\n");
     
     // Alocação de memória: Pede ao usuário o número total de territórios.
@@ -144,7 +144,7 @@ Territorio* cadastrarTerritorios(int* tamanho) {
  */
 void exibirTerritorios(Territorio* mapa, int tamanho) {
     printf("\n===================================================\n");
-    printf("🗺️ MAPA ATUAL DOS TERRITÓRIOS (%d)\n", tamanho);
+    printf(" MAPA ATUAL DOS TERRITÓRIOS (%d)\n", tamanho);
     printf("===================================================\n");
     
     for (int i = 0; i < tamanho; i++) {
@@ -192,7 +192,7 @@ int main() {
         printf("\n--- CONFIGURAR ATAQUE ---\n");
         printf("Escolha o índice do território ATACANTE (0 a %d): ", num_territorios - 1);
         if (scanf("%d", &indice_atacante) != 1 || indice_atacante < 0 || indice_atacante >= num_territorios) {
-            printf("⚠️ Índice de atacante inválido. Tente novamente.\n");
+            printf(" Índice de atacante inválido. Tente novamente.\n");
             // Limpa o buffer de entrada.
             while (getchar() != '\n'); 
             continue; 
@@ -200,13 +200,13 @@ int main() {
 
         // Validação: Atacante deve ter mais de uma tropa para atacar.
         if ((mapa_territorios + indice_atacante)->tropas <= 1) {
-            printf("⚠️ O território %s tem tropas insuficientes para atacar. Mínimo de 2 tropas.\n", (mapa_territorios + indice_atacante)->nome);
+            printf(" O território %s tem tropas insuficientes para atacar. Mínimo de 2 tropas.\n", (mapa_territorios + indice_atacante)->nome);
             continue;
         }
 
         printf("Escolha o índice do território DEFENSOR (0 a %d): ", num_territorios - 1);
         if (scanf("%d", &indice_defensor) != 1 || indice_defensor < 0 || indice_defensor >= num_territorios) {
-            printf("⚠️ Índice de defensor inválido. Tente novamente.\n");
+            printf(" Índice de defensor inválido. Tente novamente.\n");
             while (getchar() != '\n');
             continue;
         }
@@ -214,7 +214,7 @@ int main() {
         // Validação: Jogador não deve atacar território da própria cor.
         // Utiliza strcmp para comparar as strings de cor (campos acessados por ponteiros).
         if (strcmp((mapa_territorios + indice_atacante)->cor, (mapa_territorios + indice_defensor)->cor) == 0) {
-            printf("⚠️ Você não pode atacar um território da sua própria cor (%s)!\n", (mapa_territorios + indice_atacante)->cor);
+            printf(" Você não pode atacar um território da sua própria cor (%s)!\n", (mapa_territorios + indice_atacante)->cor);
             continue;
         }
 
